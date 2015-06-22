@@ -1,12 +1,6 @@
-//
-//  ViewController.m
-//  AFContinuityNavigationController
-//
-//  Created by Oz Michaeli on 6/22/15.
-//  Copyright (c) 2015 Oz Michaeli. All rights reserved.
-//
 
 #import "ViewController.h"
+#import "TableViewController.h"
 
 @interface ViewController ()
 
@@ -16,12 +10,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    // Make the top bar transparent
+    UINavigationBar *navigationBar = self.navigationBar;
+    [navigationBar setBackgroundImage:[UIImage new]
+                        forBarMetrics:UIBarMetricsDefault];
+    navigationBar.shadowImage = [UIImage new];
+    navigationBar.translucent = YES;
+    
+    UITableViewController *tableViewController = [[TableViewController alloc] initWithStyle:UITableViewStylePlain];
+    tableViewController.navigationItem.title = @"Good guys";
+    
+    [self pushViewController:tableViewController animated:NO];
 }
 
 @end
